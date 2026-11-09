@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Monthsary, Bebi Gwen! 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,500;1,700&family=Sacramento&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Switch between Dark and Light mode">
+    <span id="themeToggleIcon">☀️</span>
+    <span id="themeToggleText">Light Mode</span>
+  </button>
+
+    <canvas id="ambientCanvas"></canvas>
+
+    <div id="gateModal">
+        <div class="gate-card">
+            <div class="gate-avatar-box">
+                <img src="gwen (1).jfif" alt="Gwen" class="gate-avatar" onerror="this.src='gwen (46).jfif'">
+                <div class="gate-badge">🥺👉👈</div>
+            </div>
+
+            <h2 class="gate-title">Bebi Gwen...</h2>
+            <p class="gate-sub">Bago mo buksan 'tong monthsary website mo, honest question lang muna galing sa asawa mong makulit:</p>
+
+            <div class="gate-question-box">
+                "Galit ka pa ba sa'kin, Bebi?" 🥺
+            </div>
+
+            <div class="gate-buttons-container" id="gateBtnArea">
+                <button class="btn-yes" id="btnNotMad" onclick="unlockSite()">
+          <span>Hindi na 🥰 (Bati na tayo)</span>
+        </button>
+
+
+                <div class="runaway-slot" id="runawaySlot">
+                    <button class="btn-no-run" id="btnStillMad" onmouseover="dodgeButton()" onclick="dodgeButton()">
+            Oo, inis pa rin 😤
+          </button>
+                </div>
+            </div>
+
+            <p class="gate-hint" id="dodgeHint">Subukan mo pindutin yung "Inis pa rin" tingnan natin 😜</p>
+        </div>
+    </div>
+
+
+    <main id="mainExperience">
+
+
+        <section class="hero-section">
+            <div class="monthsary-badge">
+                ✨ Happy 6th Monthsary, My Forever! ✨
+            </div>
+            <h1 class="hero-title">
+                Happy Monthsary, <span>Bebi Gwen!</span> 💖
+            </h1>
+            <p class="hero-subtitle">
+                Asawa, Baby, Love ko sa bawat araw.
+            </p>
+
+
+            <div class="counter-wrapper">
+                <div class="counter-header">
+                    <span>⏳</span> Loving & Annoying You Since May 10, 2026
+                </div>
+                <div class="counter-grid">
+                    <div class="counter-item">
+                        <span class="counter-number" id="cntDays">00</span>
+                        <span class="counter-label">Days</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="cntHours">00</span>
+                        <span class="counter-label">Hours</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="cntMins">00</span>
+                        <span class="counter-label">Minutes</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="cntSecs">00</span>
+                        <span class="counter-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <div class="section-headline">
+                <h2 class="section-title">💌 Para Sa Misis Ko</h2>
+                <p class="section-subtitle">CLick this bebi ko.</p>
+            </div>
+
+            <div class="envelope-box">
+
+                <div class="wax-sealed-envelope" id="sealedEnvelope" onclick="openLetter()">
+                    <div class="wax-stamp">💌</div>
+                    <div class="envelope-to">For My Bebi, Asawa, Baby, Love Gwen 💖</div>
+                    <div class="envelope-tap-instruction">
+                        <span>👉 LIHAM SA'YO NG KOREANO MONG FUTURE HUSBAND 👈</span>
+                    </div>
+                </div>
+
+
+                <div class="opened-letter-paper" id="openedLetter">
+                    <div class="letter-paper-header">
+                        <span class="letter-date-stamp">May 10, 2026 — ∞</span>
+                        <span style="font-size: 20px;">🌹</span>
+                    </div>
+
+                    <div class="letter-recipient">Dearest Bebi Gwen,</div>
+
+                    <div class="letter-body" id="letterTextTarget"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dispenser-section">
+            <span class="dispenser-badge">🚨 Pampa-goodvibes Machine 🚨</span>
+            <h2 class="dispenser-title">Gwen's Emergency Smile Dispenser</h2>
+            <p class="dispenser-desc">
+                Kapag inis ka, badtrip ka sa'kin, o miss na miss mo ako, pindutin mo lang to.
+            </p>
+
+            <button class="btn-dispense" onclick="dispenseSmile(event)">
+        <span>🎁 Pindutin mo kapag naiinis ka o miss mo 'ko</span>
+      </button>
+
+            <div class="dispensed-stage" id="dispensedStage">
+                <div class="dispensed-polaroid">
+                    <img id="dispensedImg" src="gwen (1).jfif" alt="Cute Gwen">
+                    <div class="dispensed-caption" id="dispensedQuote">
+                        "Grabe, ang ganda naman ng misis ko dito."
+                    </div>
+                </div>
+            </div>
+
+            <div class="dispenser-stats" id="dispenseCounter">
+                Counter kung ilang beses kita napapangiti: <strong id="dispenseCountNum">0</strong> times 💖
+            </div>
+        </section>
+
+
+        <section class="marquee-section">
+            <div class="marquee-header">
+                <h2 class="section-title">📸 Our Polaroid Film Strip</h2>
+                <div class="marquee-badge">
+                    <span> • ALABYUUU Sana magustohan mo'to • I-click mo para bumaliktad ang picture 💖</span>
+                </div>
+            </div>
+
+            <div class="marquee-container" id="marqueeContainer">
+
+                <div class="marquee-viewport">
+                    <div class="marquee-track" id="marqueeTrack">
+
+                    </div>
+                </div>
+
+        </section>
+
+        <footer>
+            <div class="footer-heart">❤️</div>
+            <div class="footer-quote">"Ako nga pala si Kent may apat na letra, mataas tumalon malalim bumaon"</div>
+            <p class="footer-sub">
+                Ginawa nang may buong pagmamahal (at pang-aasar) para sa nag-iisang misis ko, si <strong>Gwen</strong>.<br> Happy Monthsary, Bebi! Mahal na mahal kita palagi.
+            </p>
+
+            <button class="btn-celebrate" onclick="triggerGrandCelebration(event)">
+        💖 Happy Monthsary Heart Blast! 💖
+      </button>
+        </footer>
+
+    </main>
+
+
+    <audio id="bgAudio" loop preload="auto">
+    <source src="Lil Eddie - Statue (Lyrics).mp3" type="audio/mpeg">
+    <source src="Lil%20Eddie%20-%20Statue%20(Lyrics).mp3" type="audio/mpeg">
+    <source src="statue.mp3" type="audio/mpeg">
+  </audio>
+
+
+    <div class="music-floating-widget" id="musicWidget" onclick="handleMusicWidgetClick()" title="Play / Pause Statue by Lil Eddie">
+        <div class="vinyl-disk" id="vinylDisk">
+            <div class="vinyl-center"></div>
+        </div>
+        <div class="music-meta">
+            <span class="music-title">Statue 🎵</span>
+            <span class="music-artist">Lil Eddie</span>
+            <span class="music-state-tag" id="musicStateTag">▶️ Pindutin para tumugtog</span>
+        </div>
+        <div class="music-waves" id="musicWaves">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
