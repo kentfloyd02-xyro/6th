@@ -23,32 +23,84 @@
 
     <div id="gateModal">
         <div class="gate-card">
-            <div class="gate-avatar-box">
-                <img src="gwen (1).jfif" alt="Gwen" class="gate-avatar" onerror="this.src='gwen (46).jfif'">
-                <div class="gate-badge">🥺👉👈</div>
+            <!-- Stage 0: Bati Gate -->
+            <div id="gateStageBati">
+                <div class="gate-avatar-box">
+                    <img src="gwen (1).jfif" alt="Gwen" class="gate-avatar" onerror="this.src='gwen (46).jfif'">
+                    <div class="gate-badge">🥺👉👈</div>
+                </div>
+
+                <h2 class="gate-title">Bebi Gwen...</h2>
+                <p class="gate-sub">Bago mo buksan 'tong monthsary website mo, honest question lang muna galing sa asawa mong makulit:</p>
+
+                <div class="gate-question-box">
+                    "Galit ka pa ba sa'kin, Bebi?" 🥺
+                </div>
+
+                <div class="gate-buttons-container" id="gateBtnArea">
+                    <button class="btn-yes" id="btnNotMad" onclick="startTestAndQuiz()">
+                        <span>Hindi na 🥰 (Bati na tayo)</span>
+                    </button>
+
+                    <div class="runaway-slot" id="runawaySlot">
+                        <button class="btn-no-run" id="btnStillMad" onmouseover="dodgeButton()" onclick="dodgeButton()">
+                            Oo, inis pa rin 😤
+                        </button>
+                    </div>
+                </div>
+
+                <p class="gate-hint" id="dodgeHint">Subukan mo pindutin yung "Inis pa rin" tingnan natin 😜</p>
             </div>
 
-            <h2 class="gate-title">Bebi Gwen...</h2>
-            <p class="gate-sub">Bago mo buksan 'tong monthsary website mo, honest question lang muna galing sa asawa mong makulit:</p>
+            <!-- Stage 1: The Multiple Choice Test -->
+            <div id="gateStageQuiz" style="display: none;">
+                <div class="quiz-step-badge">STEP 1 OF 2: VERIFICATION TEST 📝</div>
+                <h2 class="gate-title" style="font-size: 22px; margin-top: 10px;">POGI BA ANG ASAWA MO? 🤨</h2>
+                <p class="gate-sub" style="margin-bottom: 16px;">Pumili ka nang totoo bebi ko, walang dayaan! 😂</p>
 
-            <div class="gate-question-box">
-                "Galit ka pa ba sa'kin, Bebi?" 🥺
+                <div class="quiz-options-list">
+                    <button class="quiz-opt-btn" onclick="handleQuizAnswer('A')">
+                        <span class="opt-letter">A</span>
+                        <span class="opt-text">OO</span>
+                    </button>
+                    <button class="quiz-opt-btn" onclick="handleQuizAnswer('B')">
+                        <span class="opt-letter">B</span>
+                        <span class="opt-text">HINDI</span>
+                    </button>
+                    <button class="quiz-opt-btn" onclick="handleQuizAnswer('C')">
+                        <span class="opt-letter">C</span>
+                        <span class="opt-text">DEPENDE PAG GALIT AKO || DEPENDE PAG OVU AKO</span>
+                    </button>
+                    <button class="quiz-opt-btn" onclick="handleQuizAnswer('D')">
+                        <span class="opt-letter">D</span>
+                        <span class="opt-text">A & B</span>
+                    </button>
+                </div>
+
+                <div class="gate-feedback" id="quizFeedback"></div>
             </div>
 
-            <div class="gate-buttons-container" id="gateBtnArea">
-                <button class="btn-yes" id="btnNotMad" onclick="unlockSite()">
-          <span>Hindi na 🥰 (Bati na tayo)</span>
-        </button>
+            <!-- Stage 2: Birthday Password Challenge -->
+            <div id="gateStagePassword" style="display: none;">
+                <div class="quiz-step-badge">STEP 2 OF 2: FINAL PASSWORD 🔐</div>
+                <h2 class="gate-title" style="font-size: 22px; margin-top: 10px;">KELAN ANG DALAWANG BIRTHDAY KO? 🎂</h2>
+                <p class="gate-sub" style="margin-bottom: 16px;">
+                    I-type ang birthday ko bebi. Kahit alin sa dalawang birthday ko tatanggapin ko 😉
+                </p>
 
+                <div class="password-input-group">
+                    <input type="text" id="birthdayPassInput" class="gate-pass-input" autocomplete="off" onkeydown="if(event.key==='Enter') verifyBirthdayPassword()">
+                    <button class="btn-pass-submit" onclick="verifyBirthdayPassword()">
+                        <span>I-unlock ang Website 💖</span>
+                    </button>
+                </div>
 
-                <div class="runaway-slot" id="runawaySlot">
-                    <button class="btn-no-run" id="btnStillMad" onmouseover="dodgeButton()" onclick="dodgeButton()">
-            Oo, inis pa rin 😤
-          </button>
+                <div class="gate-feedback" id="passFeedback"></div>
+
+                <div class="pass-hints-box" id="passHintsBox" style="display: none;">
+                    <small>💡 Hint: May birthday ako sa July at may birthday ako sa January! Year 2007 pareho ❤️</small>
                 </div>
             </div>
-
-            <p class="gate-hint" id="dodgeHint">Subukan mo pindutin yung "Inis pa rin" tingnan natin 😜</p>
         </div>
     </div>
 

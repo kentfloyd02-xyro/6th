@@ -1535,3 +1535,207 @@ body.light-theme .music-artist {
     will-change: transform, opacity;
     animation: floatUpAndFade 1.6s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
 }
+
+
+/* ===================================================
+   INTERACTIVE VERIFICATION QUIZ & BIRTHDAY PASSWORD
+=================================================== */
+.quiz-step-badge {
+    display: inline-block;
+    background: rgba(255, 77, 121, 0.15);
+    border: 1px solid rgba(255, 94, 126, 0.35);
+    color: #ff85a1;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.quiz-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.quiz-opt-btn {
+    background: #23121c;
+    border: 1.5px solid rgba(255, 94, 126, 0.25);
+    border-radius: 16px;
+    padding: 12px 16px;
+    color: #fff0f3;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.quiz-opt-btn:hover {
+    background: #341829;
+    border-color: #ff4d79;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255, 77, 121, 0.25);
+}
+
+.quiz-opt-btn:active {
+    transform: scale(0.98);
+}
+
+.opt-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: rgba(255, 77, 121, 0.25);
+    color: #ff85a1;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.opt-text {
+    flex: 1;
+    line-height: 1.35;
+}
+
+/* Password Input Group */
+.password-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.gate-pass-input {
+    background: #23121c;
+    border: 2px solid rgba(255, 94, 126, 0.35);
+    border-radius: 16px;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    color: #fff0f3;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gate-pass-input:focus {
+    border-color: #ff4d79;
+    box-shadow: 0 0 16px rgba(255, 77, 121, 0.35);
+}
+
+.gate-pass-input::placeholder {
+    color: #8c6a7a;
+    font-size: 13.5px;
+}
+
+.btn-pass-submit {
+    background: linear-gradient(135deg, #ff4370, #ff1a4a);
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(255, 42, 85, 0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.btn-pass-submit:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(255, 42, 85, 0.6);
+}
+
+.gate-feedback {
+    min-height: 24px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.gate-feedback.error {
+    color: #ff6b8b;
+    animation: shakeFeedback 0.4s ease;
+}
+
+.gate-feedback.success {
+    color: #51cf66;
+    font-weight: 700;
+}
+
+@keyframes shakeFeedback {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+.pass-hints-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(255, 77, 121, 0.08);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 94, 126, 0.25);
+    color: #bfa3b0;
+    font-size: 12px;
+}
+
+/* Light Theme overrides for Test & Password */
+body.light-theme .quiz-step-badge {
+    background: #ffe3ec;
+    border-color: #ffb3c6;
+    color: #d6336c;
+}
+
+body.light-theme .quiz-opt-btn {
+    background: #ffffff;
+    border-color: #ffccd5;
+    color: #2d1822;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .quiz-opt-btn:hover {
+    background: #fff5f7;
+    border-color: #ff4d79;
+}
+
+body.light-theme .opt-letter {
+    background: #ffe3ec;
+    color: #d6336c;
+}
+
+body.light-theme .gate-pass-input {
+    background: #ffffff;
+    border-color: #ffb3c6;
+    color: #2d1822;
+}
+
+body.light-theme .gate-pass-input::placeholder {
+    color: #a88d9b;
+}
+
+body.light-theme .pass-hints-box {
+    background: #fff5f7;
+    border-color: #ffccd5;
+    color: #7d636f;
+}

@@ -177,6 +177,122 @@ function burstHearts(options = {}, event = null) {
     spawnFloatingHearts(ox, oy, 20);
 }
 
+function startTestAndQuiz() {
+    burstHearts({
+        particleCount: 25,
+        spread: 60,
+        origin: { y: 0.6 },
+    });
+    const stageBati = document.getElementById('gateStageBati');
+    const stageQuiz = document.getElementById('gateStageQuiz');
+    if (stageBati && stageQuiz) {
+        stageBati.style.display = 'none';
+        stageQuiz.style.display = 'block';
+    }
+}
+
+function handleQuizAnswer(choice) {
+    const feedback = document.getElementById("quizFeedback");
+    if (!feedback) return;
+
+    if (choice === "D") {
+        feedback.className = "gate-feedback success";
+        feedback.innerHTML = "🎉 TAMA! Ang galing naman ng misis ko! 🥰 Next: Final Password challenge...";
+        burstHearts({ particleCount: 35, spread: 75 });
+
+        setTimeout(() => {
+            const stageQuiz = document.getElementById("gateStageQuiz");
+            const stagePass = document.getElementById("gateStagePassword");
+            if (stageQuiz && stagePass) {
+                stageQuiz.style.display = "none";
+                stagePass.style.display = "block";
+                const input = document.getElementById("birthdayPassInput");
+                if (input) input.focus();
+            }
+        }, 950);
+    } else if (choice === "A") {
+        feedback.className = "gate-feedback error";
+        feedback.innerHTML = "Pogi nga talaga hehe 🙈 kaso may mas tamang sagot pa bebi! Tingnan mong mabuti yung choices 😂";
+    } else if (choice === "B") {
+        feedback.className = "gate-feedback error";
+        feedback.innerHTML = "Aba nag-deny pa misis ko! Bawal magsinungaling bebi hahahaha 😜 Subukan mo ulit!";
+    } else if (choice === "C") {
+        feedback.className = "gate-feedback error";
+        feedback.innerHTML = "Hahahaha totoo ba?! Piliin mo yung pinaka-tamang answer bebi! 🙈😂";
+    }
+}
+
+function checkBirthdayMatch(rawInput) {
+    if (!rawInput) return false;
+    const clean = rawInput.toLowerCase().trim().replace(/[,\-\.\/]/g, " ").replace(/\s+/g, " ");
+    const numbersOnly = rawInput.replace(/\D/g, "");
+
+    // Kent's 2 Birthdays:
+    // 1) July 18, 2007
+    // 2) January 31, 2007
+    const isJuly18Text = clean.includes("july 18") || clean.includes("jul 18");
+    const isJuly18Num = (
+        numbersOnly === "07182007" ||
+        numbersOnly === "7182007" ||
+        numbersOnly === "0718" ||
+        numbersOnly === "718" ||
+        numbersOnly === "071807" ||
+        numbersOnly === "71807"
+    );
+
+    const isJan31Text = (
+        clean.includes("january 31") ||
+        clean.includes("jan 31") ||
+        clean.includes("january 31st") ||
+        clean.includes("jan 31st")
+    );
+    const isJan31Num = (
+        numbersOnly === "01312007" ||
+        numbersOnly === "1312007" ||
+        numbersOnly === "0131" ||
+        numbersOnly === "131" ||
+        numbersOnly === "013107" ||
+        numbersOnly === "13107"
+    );
+
+    return (isJuly18Text || isJuly18Num || isJan31Text || isJan31Num);
+}
+
+let passWrongCount = 0;
+
+function verifyBirthdayPassword() {
+    const input = document.getElementById("birthdayPassInput");
+    const feedback = document.getElementById("passFeedback");
+    if (!input || !feedback) return;
+
+    const val = input.value;
+    if (checkBirthdayMatch(val)) {
+        feedback.className = "gate-feedback success";
+        feedback.innerHTML = "🎉 TAMA! Galing naman ng misis ko, kabisado ang birthday ko! 🥰 Bati na tayo!";
+        burstHearts({
+            particleCount: 70,
+            spread: 110,
+            origin: { y: 0.5 },
+        });
+
+        setTimeout(() => {
+            unlockSite();
+        }, 1100);
+    } else {
+        passWrongCount++;
+        feedback.className = "gate-feedback error";
+        feedback.innerHTML = "Mali bebi! 😜 Isipin mong mabuti... kailan yung dalawang birthday ko? Subukan mo ulit! ❤️";
+        
+        if (passWrongCount >= 3) {
+            const hintBox = document.getElementById("passHintsBox");
+            if (hintBox) {
+                hintBox.style.display = "block";
+            }
+        }
+        input.focus();
+    }
+}
+
 function unlockSite() {
     const modal = document.getElementById("gateModal");
     modal.classList.add("hidden");
